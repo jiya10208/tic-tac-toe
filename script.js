@@ -5,6 +5,9 @@ let winnerIndicator = getComputedStyle(document.body).getPropertyValue(
 );
 let boxes = Array.from(document.getElementsByClassName("box"));
 
+let player1 = document.getElementById("p1");
+let player2 = document.getElementById("p2");
+
 const o_text = "O";
 const x_text = "X";
 let currentPlayer = x_text;
@@ -39,7 +42,14 @@ function boxclick(e) {
     }
 
     currentPlayer = currentPlayer == x_text ? o_text : x_text;
-    console.log(currentPlayer);
+
+    currentPlayer == x_text
+      ? (player1.style.backgroundColor = "red")
+      : (player1.style.backgroundColor = "black");
+
+    currentPlayer == o_text
+      ? (player2.style.backgroundColor = "red")
+      : (player2.style.backgroundColor = "black");
   }
 }
 const winningcombo = [
