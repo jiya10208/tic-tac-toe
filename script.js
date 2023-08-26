@@ -25,6 +25,29 @@ function boxclick(e) {
     spaces[id] = currentPlayer;
     e.target.innerText = currentPlayer;
 
+    if (!spaces[id]) {
+      spaces[id] = currentPlayer;
+      e.target.innerText = currentPlayer;
+  
+      var nullcount = 0;
+      for (let i = 0; i < spaces.length; i++) {
+        if (!spaces[i]) {
+          nullcount++;
+        }
+      }
+      if (nullcount == 0) {
+        playerText.innerHTML = `tie game`;
+        setTimeout(() => {
+          restart();
+        }, 3000);
+  
+        setTimeout(() => {
+          playerText.innerHTML = "TIC TAC TOE";
+        }, 4000);
+      }
+
+      
+      
     if (playerhaswon() !== false) {
       playerText.innerHTML = `${currentPlayer} has won`;
       let winning_blocks = playerhaswon();
